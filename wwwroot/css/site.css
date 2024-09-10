@@ -1,0 +1,98 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+nav {
+    background-color: #f38630;
+    color: #302A40;
+    border-bottom: 2px solid #302A40;
+    font-weight: 500;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #e0e4cc /*floralwhite*/;
+    color: #302A40;
+}
+
+footer {
+    background-color: #69d2e7;
+    color: #302A40;
+    border-top: 2px solid #302A40;
+    font-weight: 600;
+}
+
+a[class="navbar-brand"] {
+    color: #302A40;
+    font-weight: 600;
+}
+
+button {
+    border-radius: 5px;
+    border: 1.5px solid;
+    color: #302A40;
+    background-color: transparent;
+    height: 32px;
+    font-weight: 600;
+    touch-action: manipulation;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+}
+
+button:hover {
+    color: white;
+    border: hidden;
+    background-color: #302A40;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(1px);
+}
+
+button:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+input {
+    background-color: transparent;
+    margin: 10px;
+}
+
+input:focus {
+        background-color: white;
+}
+
+input[type="text"], input[type="email"], input[type="number"], input[type="password"] {
+    border: 1.5px solid;
+    border-radius: 5px;
+    color: #302A40;
+    height: 32px;
+    padding-left: 0.5em;
+}
+
+fileInput {
+    border: 1.5px solid;
+    color: #302A40;
+}
+
+div[class="row"] {
+    margin: 10px;
+}
+
+table {
+    margin-left:auto;
+    margin-right: auto;
+}
