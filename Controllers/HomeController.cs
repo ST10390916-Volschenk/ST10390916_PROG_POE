@@ -23,6 +23,10 @@ namespace ST10390916_PROG_POE.Controllers
             return View();
         }
 
+        
+
+        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
