@@ -1,16 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor httpContextAccessor;
+@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ST10390916_PROG_POE</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ST10390916_PROG_POE.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ClaimSystem</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -20,23 +23,48 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="ReviewClaims">Claims</a>
-                        </li>
+                        @* <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li> *@
 
-                        
-                        <li class="nav-item ms-auto">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="SignUp">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Login</a>
-                        </li>
+                        @if ((httpContextAccessor.HttpContext.Session.GetInt32("UserID") != null) && (httpContextAccessor.HttpContext.Session.GetInt32("UserID") != -1))
+                        {
+                            @if (httpContextAccessor.HttpContext.Session.GetString("UserRole") == "Manager")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Claims" asp-action="ReviewClaims">Review Claims</a>
+                                </li>
+                            }
+
+                            @if (httpContextAccessor.HttpContext.Session.GetString("UserRole") == "Lecturer")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Claims" asp-action="SubmitClaim">Submit Claim</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Claims" asp-action="YourClaims">Your Claims</a>
+                                </li>
+                            }
+
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login">Log out</a>
+                            </li>
+
+                        }
+
+                        @if ((httpContextAccessor.HttpContext.Session.GetInt32("UserID") == null) || (httpContextAccessor.HttpContext.Session.GetInt32("UserID") == -1))
+                        {
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="SignUp">Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                            </li>
+                        }
 
                     </ul>
                 </div>

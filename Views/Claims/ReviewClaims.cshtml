@@ -1,33 +1,50 @@
-﻿<div class=" text-center table-bordered">
+﻿@{
+    ViewData["Title"] = "Review Claims";
+    var claims = ViewData["Claims"] as List<ST10390916_PROG_POE.Models.Claim>;
+    var user = ViewData["User"] as ST10390916_PROG_POE.Models.User;
+}
 
-    <h1>Review Claims</h1>
+<div class="table-bordered">
+
+    <h1>Your Claims</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Claim Date</th>
-                <th>Claim Amount</th>
+                <th>Lecturer Email</th>
                 <th>Hours Worked</th>
-                <th>Review</th>
-                <th>Action</th>
+                <th>Rate Per Hour</th>
+                <th>Claim Status</th>
+                <th>Claim Date</th>
+                <th>Options</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Jake</td>
-                <td>Blake</td>
-                <td>2024/08/28</td>
-                <td>5000</td>
-                <td>25</td>
-                <td>
-                    <button type="submit">Reveiw Claim</button>
-                </td>
-                <td>
-                    <button type="submit">Approve Claim</button>
-                </td>
-            </tr>
+            @for (int i = 0; i < claims.Count(); i++)
+            {
+                <tr>
+                    <td>@user.GetUser(claims[i].UserID).Email</td>
+                    <td>@claims[i].HoursWorked</td>
+                    <td>@claims[i].RatePerHour</td>
+                    <td>@claims[i].Status</td>
+                    <td>@claims[i].ClaimDate</td>
+                    <td>
+                        <form asp-controller="Claims" asp-action="UpdateClaimStatus" method="post">
+                            <input type="hidden" name="ClaimID" value="@claims[i].ClaimID" />
+                            <input type="hidden" name="Status" value="Rejected" />
+                            <button type="submit">Reject Claim</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-controller="Claims" asp-action="UpdateClaimStatus" method="post">
+                            <input type="hidden" name="ClaimID" value="@claims[i].ClaimID" />
+                            <input type="hidden" name="Status" value="Approved" />
+                            <button type="submit">Approve Claim</button>
+                        </form>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

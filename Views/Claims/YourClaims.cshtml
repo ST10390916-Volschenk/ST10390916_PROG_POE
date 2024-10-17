@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Your Claims";
+    var claims = ViewData["Claims"] as List<ST10390916_PROG_POE.Models.Claim>;
+}
+
+<div class="table-bordered">
+
+    <h1>Your Claims</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Claim Title</th>
+                <th>Hours Worked</th>
+                <th>Rate Per Hour</th>
+                <th>Status</th>
+                <th>Claim Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < claims.Count(); i++)
+            {
+                <tr>
+                    <td>@claims[i].ClaimTitle</td>
+                    <td>@claims[i].HoursWorked</td>
+                    <td>@claims[i].RatePerHour</td>
+                    <td>@claims[i].Status</td>                    
+                    <td>@claims[i].ClaimDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
