@@ -12,33 +12,37 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.nav-link {
+  color: white;
+}
+
 html {
   position: relative;
   min-height: 100%;
 }
 
 nav {
-    background-color: #f38630;
-    color: #302A40;
-    border-bottom: 2px solid #302A40;
+    background-color: #245f73;
+    color: white;
+    border-bottom: 3px solid black;
     font-weight: 500;
 }
 
 body {
     margin-bottom: 60px;
-    background-color: #e0e4cc /*floralwhite*/;
+    background-color: #F2F0EF;
     color: #302A40;
 }
 
 footer {
-    background-color: #69d2e7;
+    background-color: #BBBDBC;
     color: #302A40;
-    border-top: 2px solid #302A40;
+    border-top: 3px solid black;
     font-weight: 600;
 }
 
 a[class="navbar-brand"] {
-    color: #302A40;
+    color: white;
     font-weight: 600;
 }
 
@@ -50,20 +54,20 @@ button {
     height: 32px;
     font-weight: 600;
     touch-action: manipulation;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    //transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
 }
 
 button:hover {
     color: white;
-    border: hidden;
+    //border: hidden;
     background-color: #302A40;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(1px);
+    //transform: translateY(1px);
 }
 
 button:active {
     box-shadow: none;
-    transform: translateY(0);
+    //transform: translateY(0);
 }
 
 input {
