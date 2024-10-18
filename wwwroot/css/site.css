@@ -23,7 +23,7 @@ html {
 
 nav {
     background-color: #245f73;
-    color: white;
+    /*color: white;*/
     border-bottom: 3px solid black;
     font-weight: 500;
 }
