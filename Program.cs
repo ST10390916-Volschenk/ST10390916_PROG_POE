@@ -1,3 +1,6 @@
+//ST10390916
+//All work is my own unless otherwise cited or referenced.
+
 using Microsoft.EntityFrameworkCore;
 using ST10390916_PROG_POE.Data;
 

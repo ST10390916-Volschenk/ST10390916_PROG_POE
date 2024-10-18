@@ -1,4 +1,7 @@
-﻿using ST10390916_PROG_POE.Data;
+﻿//ST10390916
+//All work is my own unless otherwise cited or referenced.
+
+using ST10390916_PROG_POE.Data;
 
 namespace ST10390916_PROG_POE.Models
 {
@@ -19,6 +22,10 @@ namespace ST10390916_PROG_POE.Models
         public Role UserRole { get; set; }
 
 
+        /// <summary>
+        /// Adds a new user to the database
+        /// </summary>
+        /// <param name="user"></param>
         public string AddNewUser(User user)
         {
             AppDbContext context = new AppDbContext();
@@ -37,19 +44,29 @@ namespace ST10390916_PROG_POE.Models
             return msg;
         }
 
+        /// <summary>
+        /// Checks if the user exists in the database
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
         public int CheckUser(string email, string password)
         {
             int userID = -1;
             AppDbContext context = new AppDbContext();
-            User user = context.users.Where(e => e.Email.Equals(email)).SingleOrDefault();
+            User? user = context.users.Where(e => e.Email.Equals(email)).SingleOrDefault();
             if ((user != null) && (user.Password == password))
             {
                 userID = user.UserID;
             }
-            
+
             return userID;
         }
 
+        /// <summary>
+        /// Searches for a user in the database
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
         public User GetUser(int userID)
         {
             AppDbContext context = new AppDbContext();
